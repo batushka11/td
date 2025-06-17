@@ -85,16 +85,13 @@ public class Helpers {
         double[] res1 = new double[xt.length];
         double[] res2 = new double[xt1.length];
         Random rand = new Random();
-
+        double[] noise = DoubleStream.generate(() -> rand.nextDouble() * 2 - 1).limit(xt.length).toArray();
         for(int i = 0; i < xt.length; i++){
-            double noise1 = rand.nextDouble() * 2 - 1;
-            double noise2 = rand.nextDouble() * 2 - 1;
-            res1[i] = xt[i] + alfa * noise1;
-            res2[i] = xt1[i] + alfa * noise2;
+            res1[i] = xt[i] + alfa * noise[i];
+            res2[i] = xt1[i] + alfa * noise[i];
         }
         return new double[][]{res1, res2};
     }
-
 
 
     public static double[] generateAndAddNoiseModified(double[] xt ,double beta, double t0, double Tc){

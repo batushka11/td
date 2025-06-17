@@ -27,12 +27,12 @@ public class Modulation {
 
         for(int n = 0; n < signal.length; n++) {
             double t = (double) n / fs;
-            double s = 0;
+            double s;
             if(Bits[n / bitTime] == 0){
                 s = Math.sin(2 * Math.PI * t * fn1);
             }
             else {
-                s =Math.sin(2 * Math.PI * t * fn2);
+                s = Math.sin(2 * Math.PI * t * fn2);
             }
             signal[n] = s;
         }

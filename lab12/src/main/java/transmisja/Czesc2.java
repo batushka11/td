@@ -27,15 +27,15 @@ public class Czesc2 {
         double fn2 = (W + 2) / Tb;
 
         int index = 0;
-        double[] alfas = new double[1000];
-        double[] bers = new double[1000];
+        double[] alfas = new double[100];
+        double[] bers = new double[100];
 
         //ASC 7,4
 
         double[] za = Modulation.za(A1,A2,encode7_4,fn,fs,Tb);
         double[] xt = Modulation.xt(za, fn, fs, A, 0);
 
-        for(double i = 0; i < 12; i += 0.3){
+        for(double i = 0; i < 30; i += 0.3){
             double[] yt = Helpers.generateAndAddNoiseModified(xt,i, t0, Tc);
             double[] pt = Demodulation.pt(yt, fs, Tb);
             //Plot.generatePlot(pt.length,fs,pt,"Step 3 - ASK");
@@ -56,7 +56,7 @@ public class Czesc2 {
         index = 0;
         double[] zp = Modulation.zp(encode7_4,fn,fs,Tb);
         double[] xt1 = Modulation.xt(zp, fn, fs, A, Math.PI);
-        for(double i = 0; i < 12; i += 0.3){
+        for(double i = 0; i < 30; i += 0.3){
             double[] yt = Helpers.generateAndAddNoiseModified(xt1,i, t0, Tc);
             double[] pt = Demodulation.pt(yt, fs, Tb);
             int[] ct = Demodulation.ct(pt, 0);
@@ -76,7 +76,7 @@ public class Czesc2 {
         double[] zf = Modulation.zf(encode7_4,fn1,fn2,fs,Tb);
         double[] xt2 = Modulation.xt1(zf,fn1,fs);
         double[] xt3 = Modulation.xt1(zf,fn2,fs);
-        for(double i = 0; i < 12; i += 0.3){
+        for(double i = 0; i < 30; i += 0.3){
             double[] yt1 = Helpers.generateAndAddNoiseModified(xt2,i, t0, Tc);
             double[] yt2 = Helpers.generateAndAddNoiseModified(xt3,i, t0, Tc);
             double[] pt1 = Demodulation.pt(yt1,fs,Tb);
@@ -94,9 +94,6 @@ public class Czesc2 {
         }
         XYSeries plot2 = Plot.createAlfaBersPlot(bers,alfas,"FSK 7,4");
 
-
-
-
         int[] encode15_11 = Hamming15_11.encode(bits);
         B = encode15_11.length;
         Tb = Tc / B;
@@ -111,7 +108,7 @@ public class Czesc2 {
         xt = Modulation.xt(za, fn, fs, A, 0);
         h=660;
 
-        for(double i = 0; i < 12; i += 0.3){
+        for(double i = 0; i < 30; i += 0.3){
             double[] yt = Helpers.generateAndAddNoiseModified(xt,i, t0, Tc);
             double[] pt = Demodulation.pt(yt, fs, Tb);
             int[] ct = Demodulation.ct(pt, h);
@@ -131,7 +128,7 @@ public class Czesc2 {
         index = 0;
         zp = Modulation.zp(encode15_11,fn,fs,Tb);
         xt1 = Modulation.xt(zp, fn, fs, A, Math.PI);
-        for(double i = 0; i < 12; i += 0.3){
+        for(double i = 0; i < 30; i += 0.3){
             double[] yt = Helpers.generateAndAddNoiseModified(xt1,i, t0, Tc);
             double[] pt = Demodulation.pt(yt, fs, Tb);
             int[] ct = Demodulation.ct(pt, 0);
@@ -151,7 +148,7 @@ public class Czesc2 {
         zf = Modulation.zf(encode15_11,fn1,fn2,fs,Tb);
         xt2 = Modulation.xt1(zf,fn1,fs);
         xt3 = Modulation.xt1(zf,fn2,fs);
-        for(double i = 0; i < 12; i += 0.3){
+        for(double i = 0; i < 30; i += 0.3){
             double[] yt1 = Helpers.generateAndAddNoiseModified(xt2,i, t0, Tc);
             double[] yt2 = Helpers.generateAndAddNoiseModified(xt3,i, t0, Tc);
             double[] pt1 = Demodulation.pt(yt1,fs,Tb);

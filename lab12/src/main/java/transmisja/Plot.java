@@ -80,7 +80,7 @@ public class Plot {
 
     public static XYSeries createAlfaBersPlot(double[] bers, double[] alfas, String Name) {
         XYSeries plot = new XYSeries(Name);
-        for(int k = 0; k < 40; k++){
+        for(int k = 0; k < bers.length; k++){
             plot.add(alfas[k], bers[k]);
         }
         return plot;

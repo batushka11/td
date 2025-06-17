@@ -25,11 +25,12 @@ public class Demodulation {
     };
 
     public static double[] ptDifferences(double[] pt1, double[] pt2){
+        double[] bits = new double[pt1.length];
         for(int i = 0; i < pt1.length; i++){
-            pt1[i] = pt2[i] - pt1[i];
+            bits[i] = pt2[i] - pt1[i];
         }
 
-        return pt1;
+        return bits;
     }
 
     public static int[] ct(double[] pt, double h) {
