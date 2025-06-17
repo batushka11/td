@@ -1,3 +1,5 @@
+//Author: Andrii Zhupanov 214A 55616
+
 package transmisja;
 
 import java.util.LinkedList;

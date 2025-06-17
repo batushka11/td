@@ -13,8 +13,8 @@ public class Demodulation {
             double sum = 0;
             for(int y = i * bitTime; y < (i + 1) * bitTime; y++ ) {
                 sum += xt[y];
-                res.add(sum);
             }
+            res.add(sum);
         }
 
         double[] pt = new double[res.size()];
@@ -45,4 +45,34 @@ public class Demodulation {
         return ct;
     }
 
+    public static double[] ptASC(double[] xt, double fs, double Tb){
+        int bitTime = (int)(fs * Tb);
+        int numBits = xt.length / bitTime;
+        LinkedList<Double> res = new LinkedList<>();
+        for(int i = 0; i < numBits; i++) {
+            double sum = 0;
+            for(int y = i * bitTime; y < (i + 1) * bitTime; y++ ) {
+                sum += Math.abs(xt[y]);
+            }
+            res.add(sum);
+        }
+
+        double[] pt = new double[res.size()];
+        for(int i = 0; i < pt.length; i++) {
+            pt[i] = res.get(i);
+        }
+        return pt;
+    }
+
+    public static int[] ctASK(double[] pt, double h) {
+        int[] ct = new int[pt.length];
+        for (int i = 0; i < pt.length; i++) {
+            if (pt[i] > h) {
+                ct[i] = 0;
+            } else {
+                ct[i] = 1;
+            }
+        }
+        return ct;
+    }
 }
